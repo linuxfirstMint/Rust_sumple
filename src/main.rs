@@ -1,10 +1,17 @@
+extern crate rand; // rand::が使えるようになる
+
+use rand::Rng;
 use std::io;
 
 fn main() {
     println!("Guess the number!");
     println!("Please input your guess.");
 
-    let mut guess = String::new(); // letは不変,let mutは可変
+    let secret_number = rand::thread_rng().gen_range(1, 101);
+
+    println!("The secret number is {}", secret_number);
+
+    let mut guess = String::new();
 
     io::stdin()
         .read_line(&mut guess)
